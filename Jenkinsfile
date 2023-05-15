@@ -19,10 +19,10 @@ node {
     }
   
     stage('deploy') {
-      def resourceGroup = 'Dev_Grafana'
-      def webAppName = 'cicdjava'
+      def resourceGroup = '<resource_group>'
+      def webAppName = '<app_name>'
       // login Azure
-      withCredentials([usernamePassword(credentialsId: '50192942-3704-44bf-ae70-93d354368d0b', passwordVariable: 'M6w8Q~ybOkazCAHvK46ixJt5OActc6fOf.nKQbL.', usernameVariable: '41bf6f5a-1650-40ad-b6ed-ab5ffb765549')]) {
+      withCredentials([usernamePassword(credentialsId: 'idjavacicd', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
        sh '''
           az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
           az account set -s $AZURE_SUBSCRIPTION_ID
